@@ -11,7 +11,7 @@ public class ProgramDAO {
 		Department dep = new Department(1, "Fiscal");
 		System.out.println(dep);
 		
-		Seller seller = new Seller(21, "Juju", "juju@gmail.com", new Date(), 4000.0, dep);
+		Seller seller = new Seller(21, "Juju Cardoso", "juju@gmail.com", new Date(), 4000.0, dep);
 		System.out.println();
 		System.out.println(seller);
 	}
