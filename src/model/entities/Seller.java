@@ -3,7 +3,8 @@ package model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Seller implements Serializable{
+public class Seller implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -11,9 +12,9 @@ public class Seller implements Serializable{
 	private String email;
 	private Date birthDate;
 	private Double baseSalary;
-
+	
 	private Department department;
-
+	
 	public Seller() {
 	}
 
@@ -66,11 +67,11 @@ public class Seller implements Serializable{
 		this.baseSalary = baseSalary;
 	}
 
-	public Department getdepartment() {
+	public Department getDepartment() {
 		return department;
 	}
 
-	public void setdepartment(Department department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 

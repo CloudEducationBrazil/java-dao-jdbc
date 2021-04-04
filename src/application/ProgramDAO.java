@@ -1,30 +1,47 @@
 package application;
 
-//import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
-import model.dao.SellerDao;
-//import model.entities.Department;
-import model.entities.Seller;
+import model.dao.DepartmentDao;
+import model.entities.Department;
 
 public class ProgramDAO {
 
 	public static void main(String[] args) {
-		// Testando as Classes
-		/*Department dep = new Department(1, "Fiscal");
+
+		Scanner sc = new Scanner(System.in);
+		
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+
+		System.out.println("=== TEST 1: findById =======");
+		Department dep = departmentDao.findById(1);
 		System.out.println(dep);
 		
-		Seller seller = new Seller(21, "Juju Cardoso", "juju@gmail.com", new Date(), 4000.0, dep);
-		System.out.println();
-		System.out.println(seller);*/
+		System.out.println("\n=== TEST 2: findAll =======");
+		List<Department> list = departmentDao.findAll();
+		for (Department d : list) {
+			System.out.println(d);
+		}
+
+		System.out.println("\n=== TEST 3: insert =======");
+		Department newDepartment = new Department(null, "Music");
+		departmentDao.insert(newDepartment);
+		System.out.println("Inserted! New id: " + newDepartment.getId());
+
+		System.out.println("\n=== TEST 4: update =======");
+		Department dep2 = departmentDao.findById(1);
+		dep2.setName("Food");
+		departmentDao.update(dep2);
+		System.out.println("Update completed");
 		
-		// O programa não conhece a implementação só conhece somente a Interface.
-		// É uma forma de fazer uma injeção de dependência sem explicitar a implementação. 
-		// Ele chama a Fábrica Dao.
-		SellerDao sellerDao = DaoFactory.createSellerDao();
-		
-		Seller seller = sellerDao.findById(3);
-		
-		System.out.println(seller);
+		System.out.println("\n=== TEST 5: delete =======");
+		System.out.print("Enter id for delete test: ");
+		int id = sc.nextInt();
+		departmentDao.deleteById(id);
+		System.out.println("Delete completed");
+
+		sc.close();
 	}
 }
